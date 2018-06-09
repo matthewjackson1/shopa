@@ -1,0 +1,19 @@
+{
+  "name": "bloc-capstone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "export NODE_ENV=test && jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewjackson1/bloc-capstone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewjackson1/bloc-capstone/issues"
+  },
+  "homepage": "https://github.com/matthewjackson1/bloc-capstone#readme"
+}
