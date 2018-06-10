@@ -8,7 +8,7 @@ describe("routes : static", () => {
   describe("GET /", () => {
 
 //#2
-it("should return status code 200 and have 'Free online writing competitions' in the body of the response", () => {
+it("should return status code 200 and have 'Free online writing competitions' in the body of the response", (done) => {
   request.get(base, (err, res, body) => {
     expect(res.statusCode).toBe(200);
     expect(body).toContain("Free online writing competitions");
