@@ -1,6 +1,17 @@
+@font-face {
+  font-family: "sofia-pro-semibold"; 
+  src: url('/fonts/SofiaProSemiBold.otf');
+} 
+
+@font-face {
+  font-family: "sofia-pro-medium"; 
+  src: url('/fonts/SofiaProMedium.otf');
+} 
+
 body {
     padding-top: 54px;
-    font-family: "Quicksand";
+    font-family: "sofia-pro-medium";
+ 
   }
 
 #homeJumbotron {
@@ -69,7 +80,6 @@ body {
     background-size:100%;
       height: 400px;
       background-position: center;
-      background-position-y: ;
   }
 
 
