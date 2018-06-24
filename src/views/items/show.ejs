@@ -1,0 +1,23 @@
+ <!-- #1 -->
+ <% if(item) { %>
+    <div style="width: 50%">
+      <hr>
+      <p>
+        <%= item.name %>
+      </p>
+      <small class="card-subtitle mb-2 text-muted">
+   <!-- #2 -->
+        Completed? <%= item.is_completed %>
+      </small>
+  
+   <!-- #3 -->
+      <% if(currentUser && currentUser.id === comment.userId || currentUser.isAdmin()) { %>
+        <form style="display:initial"
+              action="/users/<%= user.userId %>/items/<%= item.id %>/destroy"
+              method="post">
+          <button type="submit" class="btn btn btn-sm btn-outline-danger">Delete</button>
+        </form>
+      <% } %>
+      <hr>
+    </div>
+  <% } %>

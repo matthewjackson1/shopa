@@ -1,6 +1,7 @@
 // #1
 const User = require("./models").User;
 const bcrypt = require("bcryptjs");
+const Item = require("./models").Item;
 
 module.exports = {
 // #2
@@ -21,6 +22,18 @@ module.exports = {
     .catch((err) => {
       callback(err);
     })
+  },
+
+  getUser(id, callback){
+    return User.findById(id)
+
+// #2
+    return User.findById(id, {
+      include: [
+        {model: Item, as: "items" }
+      ]
+    })
   }
+  
 
 }

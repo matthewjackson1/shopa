@@ -11,7 +11,32 @@
       <!-- Page Content -->
       <main class="container">
           <% include ../static/partials/messages.ejs %>
-        <!-- Jumbotron Header -->
+          <!-- testing react integration-->
+        <div id="product-list"></div>
+        <script src="localhost:3000/client/src/test.js"></script>
+
+        <section id="item-form">
+
+          <!-- #1 -->
+             <% if(currentUser) { %>
+               <% include ../items/new.ejs %>
+             <% } %>
+            </section>
+         
+          <!-- #2 -->
+            <section id="item-list">
+          <% if(currentUser) { %>
+             <% if(currentUser.items) { %>
+               <% currentUser.items.forEach((item) => { %>
+         
+          <!-- #3 -->
+                 <%- include("../items/show.ejs", {item}) %>
+               <% }) %>
+             <% } %>
+            <% } %>
+            </section>
+
+
         <header class="jumbotron my-4" id="homeJumbotron">
           <h1 class="home-title">Free online writing competitions to fuel your creativity</h1>
           <p class="lead"></p>
