@@ -25,13 +25,16 @@ module.exports = {
   },
 
   getUser(id, callback){
-    return User.findById(id)
 
-// #2
     return User.findById(id, {
       include: [
         {model: Item, as: "items" }
       ]
+    }).then((user) => {
+      callback(null, user);
+    })
+    .catch((err) => {
+      callback(err);
     })
   }
   

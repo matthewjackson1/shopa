@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <main class="container">
+      <% include ../static/partials/navbar.ejs %>
+
+      <h1>Items</h1>
+     
+      <% if(currentUser) { %>
+        <section id="item-form"> 
+        <% include ./new.ejs %>
+        </section>
+        <section id="item-list">
+            <% items.forEach((item) => { %>
+            <%- include("../items/show.ejs", {item}) %>
+            <% }) %>
+        </section>
+      <% } %>
+
+    </main>
+
+    <div id="reactList"></div>
+
+    
+    <script type="text/babel">
+       class Item extends React.Component {
+            render() {
+                return (
+                    <li>
+                        <input type="checkbox" checked={ this.props.isCompleted } />
+                        <span>{ this.props.name }</span>
+                    </li>
+                );
+            }
+        }
+
+       class Shoppinglist extends React.Component {
+         constructor(props) {
+             super(props);
+             this.state = {
+                 items: [],
+             };   
+         }
+
+        componentDidMount(){
+            
+            fetch("/getitems", {credentials: 'include'})
+                .then(response => response.json())
+                .then(json => {
+                  console.log(json);
+                  this.setState({items: json});
+                  console.log(this.state);
+      });
+
+
+             
+        };
+        
+        render() {
+           return (
+             <div className="Shoppinglist">
+               <h1>Hello World!</h1>
+               <div className="ItemList">
+                {this.state.items.map( (item, index) =>
+                <div key={ item.id }>
+                    <Item key={ index } name={ item.name } isComplete={ item.is_complete } />
+                </div>
+        )}
+      </div>
+             </div>
+           );
+         }
+       };
+ 
+       ReactDOM.render(
+         <Shoppinglist />, document.getElementById('reactList')
+       );
+    </script>
+  </body>
+</html>

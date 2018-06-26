@@ -4,8 +4,20 @@ const User = require("./models").User;
 const Authorizer = require("../policies/item.js");
 
 module.exports = {
+  getAllItems(req, callback){
+    return Item.findAll({
+      where: {
+        userId: req.user.id,
+      }
+    })
+    .then((items) => {
+      callback(null, items);
+    })
+    .catch((err) => {
+      callback(err);
+    })
+  },
 
- // #2
   createItem(newItem, callback){
     return Item.create(newItem)
     .then((item) => {

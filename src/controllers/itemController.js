@@ -2,15 +2,38 @@ const itemQueries = require("../db/queries.items.js");
 const Authorizer = require("../policies/item.js");
 
 module.exports = {
+  index(req, res, next){
+    itemQueries.getAllItems(req, (err, items) => {
+              if(err){
+              console.log(err);
+                res.redirect(500, "static/index");
+              } else {
+                res.render("items/index", {items});
+              }
+            });
+  },
+
+  getUserItems(req, res, next){
+
+    itemQueries.getAllItems(req, (err, items) => {
+        if(err){
+          console.log(err);
+          } else {
+            res.send(items);
+          }
+        });
+  },
+  
   create(req, res, next){
  // #2
+    console.log("CREATE");
     const authorized = new Authorizer(req.user).create();
 
     if(authorized) {
-
+      console.log(authorized);
  // #3
       let newItem = {
-        name: req.body.body,
+        name: req.body.name,
         userId: req.user.id
       };
 
@@ -19,6 +42,7 @@ module.exports = {
  // #5
         if(err){
           req.flash("error", err);
+          console.log(err);
         }
         res.redirect(req.headers.referer);
       });

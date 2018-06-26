@@ -1,16 +1,11 @@
 const express = require("express");
 const router = express.Router();
-
- //#1
 const itemController = require("../controllers/itemController");
 const validation = require("./validation");
 
- // #2
-router.post("/users/:userId/items/create",
-  validation.validateItems,
-  itemController.create);
+router.get("/getitems", itemController.getUserItems);
+router.get("/items", itemController.index);
+router.post("/users/:userId/items/create", validation.validateItems, itemController.create);
+router.post("/users/:userId/items/:id/destroy", itemController.destroy);
 
- // #3
-router.post("/users/:userId/items/:id/destroy",
-  itemController.destroy);
 module.exports = router;
