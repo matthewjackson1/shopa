@@ -37,6 +37,8 @@ module.exports = {
         userId: req.user.id
       };
 
+      console.log("Newitem", newItem);
+
  // #4
       itemQueries.createItem(newItem, (err, item) => {
  // #5
@@ -44,6 +46,7 @@ module.exports = {
           req.flash("error", err);
           console.log(err);
         }
+        console.log("HEREEE");
         res.redirect(req.headers.referer);
       });
     } else {

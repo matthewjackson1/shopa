@@ -20,6 +20,9 @@ module.exports = {
     },
 
     validateItems(req, res, next) {
+      console.log("validating");
+      console.log(req.body);
+      //console.log(req);
       if(req.method === "POST") {
         req.checkBody("name", "must not be empty"). notEmpty();
       }
