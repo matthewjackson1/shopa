@@ -55,6 +55,58 @@ module.exports = {
     }
   },
 
+  update(req, res, next){
+    // #2
+       console.log("UPDATE");
+       const authorized = new Authorizer(req.user).update();
+   
+       if(authorized) {
+         console.log(authorized);
+    // #3
+         console.log("reqbody", req.body);
+   
+    // #4
+         itemQueries.updateItem(req, (err, item) => {
+    // #5
+           if(err){
+             req.flash("error", err);
+             console.log(err);
+           }
+           console.log("HEREEE");
+           res.redirect(req.headers.referer);
+         });
+       } else {
+         req.flash("notice", "You must be signed in to do that.")
+         req.redirect("/users/sign_in");
+       }
+     },
+
+     toggleComplete(req, res, next){
+      // #2
+         console.log("TOGGLECOMPLETE");
+         const authorized = new Authorizer(req.user).update();
+     
+         if(authorized) {
+           console.log(authorized);
+      // #3
+           console.log("reqbody", req.body);
+     
+      // #4
+           itemQueries.toggleItem(req, (err, item) => {
+      // #5
+             if(err){
+               req.flash("error", err);
+               console.log(err);
+             }
+             console.log("HEREEE");
+             res.redirect(req.headers.referer);
+           });
+         } else {
+           req.flash("notice", "You must be signed in to do that.")
+           req.redirect("/users/sign_in");
+         }
+       },
+
 // #6
   destroy(req, res, next){
     itemQueries.deleteItem(req, (err, item) => {
