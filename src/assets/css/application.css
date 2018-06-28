@@ -69,7 +69,8 @@ body {
 
 
 #signup {
-  border: 1px solid white;
+  border: 2px solid white;
+  border-radius: 30px;
 }
 
 #or {
