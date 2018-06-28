@@ -8,51 +8,19 @@
       <!-- Navigation -->
       <% include ./partials/navbar.ejs %>
 
-      <!-- Page Content -->
-      <main class="container">
-          <% include ../static/partials/messages.ejs %>
-          <!-- testing react integration-->
-        <div id="product-list"></div>
-        <script src="../../client/src/test.js"></script>
+      <main class="container"> 
+             
+        <% if(currentUser) { %>
 
+          <% include ./partials/shoppinglist.ejs %>
 
+        <% } else { %>
 
+          <% include ./partials/loggedOutHome.ejs %>
 
-        <header class="jumbotron my-4" id="homeJumbotron">
-          <h1 class="home-title">Free online writing competitions to fuel your creativity</h1>
-          <p class="lead"></p>
-          <a href="#" class="btn btn-primary btn-lg">Browse contests</a>
-        </header>
-
-        <!-- Page Features -->
-        <section class="row text-center">
-
-          <section class="col-lg-4">
-            <h4 class="card-title"><i class="fas fa-3x fa-trophy"></i></h4>
-            <p class="card-text">New competitions added daily</p>
-          </section>
-
-          <section class="col-lg-4">
-            <h4 class="card-title"><i class="fas fa-3x fa-gift"></i></h4>
-            <p class="card-text">Completely FREE entry</p>
-          </section>
-
-          <section class="col-lg-4">
-            <h4 class="card-title"><i class="fas fa-3x fa-arrow-circle-up"></i></h4>
-            <p class="card-text">Push your writing to the next level</p>
-          </section>
-
-        </section>
-        <section class="row text-center">
-            <a href="#" class="btn btn-primary btn-lg" id="home-browse-btn">Get started</a>
-
-       </section>
-       
-        <!-- /.row -->
-
+        <% } %>
+  
       </main>
-      
-      <!-- /.container -->
 
       <% include ./partials/baseScripts.ejs %>
     </body>
