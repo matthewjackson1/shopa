@@ -28,12 +28,17 @@ class Item extends React.Component {
 
 
       itemControls() {
-           return <div className="controls">
-                          { this.state.editClicked[this.props.index] ? 
-                          <span onClick={(e) => this.toggleEdit(e, this.props.index) }><span className="msgIcons ion-close-circled btn-secondary" /> Cancel</span> : 
-                          <span onClick={(e) => this.toggleEdit(e, this.props.index) }><span className="msgIcons ion-edit btn-secondary" /> Edit</span> }
-                          <span className="delete" onClick={(e) => this.props.handleDelete(e, this.props.index)}><span className="msgIcons ion-trash-a btn-secondary" />Delete</span>
-          </div>
+           return <div>
+                           {this.state.editClicked[this.props.index] ? 
+                            <span className="btn-secondary" onClick={(e) => this.toggleEdit(e, this.props.index) }> Cancel</span>:
+                            <div> 
+                                <span className="btn-secondary" onClick={(e) => this.toggleEdit(e, this.props.index) }> Edit</span>
+                                <span className="delete btn-secondary" onClick={(e) => this.props.handleDelete(e, this.props.index)}>Delete</span>
+                            </div>
+                           }
+                </div>
+                           
+          
       }
 
       toggleEdit(e, messageKey){
@@ -51,32 +56,45 @@ class Item extends React.Component {
           return (
               <div>
                   { !this.state.editClicked[this.props.index] &&
-                      <div className="leftCol">
-                         <input className="checkbox" type="checkbox" checked={ this.props.isComplete } onChange={ this.props.toggleComplete } />
-                         <span>{ this.props.name }</span>
+                    
+                      <div className="row">
+                        <div className="col-lg-1 list list-left">
+                         <input className="" type="checkbox" checked={ this.props.isComplete } onChange={ this.props.toggleComplete } />
+                        </div>
+                        <div className="col-lg-6 list list-center">
+                            { this.props.name }
+                        </div>
+                        <div className="col-lg-3 list list-right">
+                            { this.itemControls() }
+                        </div>
                       </div>
+
                   }
 
                   { this.state.editClicked[this.props.index] &&
                       
-                      <form onSubmit={(e) => this.handleSubmit(e)}> 
-
-                          <input className="itmUpdate" 
-                          type="text" 
-                          defaultValue={this.props.name} 
-                          onChange={(e)=>this.handleChange(e)}/>
-
-                          <input className="itmSubmit" 
-                          type="submit" 
-                          value="update" 
-                           />
-                      </form>
-                      
-                  }
-                      
-                          {this.itemControls()}
-                      
-              
+                        <div className="row">
+                            
+                                <div className="col-lg-1 list list-left">
+                                    <input className="styled-checkbox" type="checkbox" checked={ this.props.isComplete } onChange={ this.props.toggleComplete } />
+                                </div>
+                                <div className="col-lg-6 list list-center">
+                                    <form className="updateform" onSubmit={(e) => this.handleSubmit(e)}> 
+                                        <input className="list-tf" type="text" 
+                                        defaultValue={this.props.name} 
+                                        onChange={(e)=>this.handleChange(e)}/>
+                                        <input className="btn-primary" 
+                                        type="submit" 
+                                        value="update" 
+                                        />
+                                    </form>
+                                </div>
+                           
+                            <div className="col-3 list list-right">
+                                { this.itemControls() }
+                            </div>
+                        </div>
+                  }  
               </div>
           );
       }
@@ -266,13 +284,20 @@ class Item extends React.Component {
      return (
        <div className="Shoppinglist">
          <div className="ItemList">
-          <ul>
-          <li>
-              <form onSubmit={ (e) => this.handleSubmit(e) }>
-                  <input type="text" value={ this.state.newItemName } onChange={ (e) => this.handleChange(e) } />
-                  <input type="submit" />
-              </form>
-          </li>
+          
+              <div className="row">
+                <div className="col-lg-1 list list-left">
+                    <i className="fas fa-plus add-new"></i>
+                </div>
+                <div className="col-lg-8 list list-center">
+                    <form className="updateform" onSubmit={ (e) => this.handleSubmit(e) }>
+                        <input className="list-tf" type="text" value={ this.state.newItemName } onChange={ (e) => this.handleChange(e) } />
+                        <input className="btn-primary" type="submit" />
+                    </form>
+                </div>
+                
+              </div>
+         
           {this.state.items.map( (item, index) =>
               <Item key={ index } 
               index ={ index } 
@@ -283,9 +308,8 @@ class Item extends React.Component {
               handleEdit={ (newVal) => this.handleEdit(index, newVal) }
                />
            )}
-           </ul>
            
-       </div>
+        </div>
        </div>
      );
    }

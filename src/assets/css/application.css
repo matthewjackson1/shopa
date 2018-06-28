@@ -14,6 +14,8 @@ body {
  
   }
 
+
+
   .title-text {
     margin-top:20px;
   }
@@ -64,9 +66,7 @@ body {
   color: white !important;
 }
 
-.nav-item{
-  padding-left: 10px;
-}
+
 
 #signup {
   border: 1px solid white;
@@ -108,6 +108,46 @@ body {
   margin-top: 20px;
 }
 
+/* list page */
+
+ .list {
+   padding: 10px;
+ }
+
+ .add-new {
+   font-size: 24px;
+   color: black;
+  
+ }
+
+ .btn-secondary {
+   padding:10px 15px;
+   margin-right:8px;
+ }
+
+ .btn-primary{
+   padding: 10px 15px;
+ }
+
+ .list-tf {
+   padding: 8px;
+   width: 250px;
+   margin-right: 15px;
+   margin-top: -10px
+ }
+
+ .row {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #f4f4f4;
+  height:60px;
+ }
+
+ .updateform {
+   margin-top: -10px;
+ }
+
+ 
 
 @media screen and (min-width: 992px) {
 
@@ -134,7 +174,11 @@ body {
     max-width: 300px;
     font-size: 26px;
   }
+  .list-tf {
+   max-width:100px;
+  }
 
+ 
 
 }
 
@@ -145,6 +189,10 @@ body {
 
   #or {
     display:none;
+  }
+
+  .row{
+    height: initial;
   }
 }
 
