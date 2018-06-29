@@ -1,6 +1,6 @@
 # Shopa
 
-A Shared Real-time Grocery List - ditch the old scraps of paper and go shopa-ing!
+A shared real-time grocery list - ditch the old scraps of paper and go shopa-ing!
 Shopa is a grocery list web-application that can be shared in real-time by multiple users. Shopa allows you to build your shopping list collaboratively with others and share it instantly with anyone around the world with access to a smart phone, tablet or computer. The live-updating checklist functionality shows which items have been purchased already and which remain to be purchased, so you won't end up with unwanted extras. You can also edit items on your shopping list and remove items which are no longer needed.
 
 ## Getting Started
@@ -25,25 +25,26 @@ https://www.postgresql.org/download/
 - Create `.env` file in the top level directory (same level as `package.json` to accommodate requirement for secret option for sessions. add the line `megasecret="but there are plenty of forks"` to `/env`.
 
 - Set up databases for development and test:
--- Start the database server
+
+Start the database server
 ```
 pg_ctl -D /usr/local/var/postgres start
 ```
--- Create the databases
+Create the databases
 ```
 createdb -U postgres -w bloccit-dev
 createdb -U postgres -w bloccit-test
 ```
-- Run database migrations to generate the required tables
+Run database migrations to generate the required tables
 ```
 sequelize db:migrate
 sequelize db:migrate --env test
 ```
-- You should then be able to start the development server
+You should then be able to start the development server
 ```
 npm start
 ```
-- Navigate to `http://localhost:3001/` to try out the site
+Navigate to `http://localhost:3001/` to try out the site
 
 ### Features
 
