@@ -75,7 +75,9 @@ Tests are written in jasmine for this application, and there are unit and integr
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
+Due to time constraints I was not able to create a full test suite. That said, the following are the type of activities that I would wish to have full testing across.
+
+I was able to complete decent unit tests for my user and item models and some basic integration tests for the user model and logged out homepage.
 
 - Can I see the homepage when I am logged out?
 - Can I create an account
