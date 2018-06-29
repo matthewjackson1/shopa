@@ -90,13 +90,7 @@ Explain what these tests test and why
 - Can I mark an item as completed?
 - Can I mark a completed item as incomplete again?
 
-### And coding style tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
 ### What is next? 
 
 - Test coverage is severely lacking due to time constraints - better to have a working prototype without tests than no product with tests. Most likely such an MVP would be thrown away quickly anyway.
