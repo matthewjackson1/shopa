@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <% console.log(process.cwd()); include ./partials/head.ejs %>
+    <% include partials/head.ejs %>
   </head>
   <body>
 
       <!-- Navigation -->
-      <% include ./partials/navbar.ejs %>
+      <% include partials/navbar.ejs %>
 
       <main class="container"> 
              
         <% if(currentUser) { %>
 
-          <% include ./partials/shoppinglist.ejs %>
+          <% include partials/shoppinglist.ejs %>
 
         <% } else { %>
 
-          <% include ./partials/loggedOutHome.ejs %>
+          <% include partials/loggedOutHome.ejs %>
 
         <% } %>
   
       </main>
 
-      <% include ./partials/baseScripts.ejs %>
+      <% include partials/baseScripts.ejs %>
     </body>
 </html>
