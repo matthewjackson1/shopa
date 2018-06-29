@@ -175,10 +175,6 @@ If you have any issues, `heroku logs -t` may be useful for troubleshooting.
 - I enjoyed thinking through how the user interface would look and implementing aspects of that (though I didn't have time for everything)
 - I liked near the end when everything started coming together and I knew how to make changes I wanted to make (e.g adding updating and deletion functionality, as I'd basically done this before with the creation).
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Authors
 
 * **Matthew Jackson** - (https://github.com/matthewjackson1)
