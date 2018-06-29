@@ -49,7 +49,8 @@ Navigate to `http://localhost:3001/` to try out the site
 ### Features
 
 ##### Homepage
-A brief introduction to 
+A brief introduction to what the site is about and prompts to log in or sign up so you can get started.
+
 ![image](https://user-images.githubusercontent.com/31005853/42067516-7f8e38a2-7b3e-11e8-8a00-b8b1b8443529.png)
 
 ##### Sign up and login
