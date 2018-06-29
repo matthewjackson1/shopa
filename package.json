@@ -5,9 +5,8 @@
   "main": "src/server.js",
   "scripts": {
     "test": "export NODE_ENV=test && jasmine",
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "node src/server.js",
-    "client": "node start-client.js"
+    "start": "node src/server.js"
+
   },
   "repository": {
     "type": "git",
