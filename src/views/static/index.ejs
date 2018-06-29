@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   
+    <% include ./partials/head.ejs %>
   </head>
   <body>
-    hello
-<!--
-        
+
+      <!-- Navigation -->
       <% include ./partials/navbar.ejs %>
 
       <main class="container"> 
-       
+             
         <% if(currentUser) { %>
 
           <% include ./partials/shoppinglist.ejs %>
@@ -20,10 +19,9 @@
           <% include ./partials/loggedOutHome.ejs %>
 
         <% } %>
-        
+  
       </main>
 
       <% include ./partials/baseScripts.ejs %>
-    -->
     </body>
 </html>

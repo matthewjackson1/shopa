@@ -4,39 +4,39 @@ const bcrypt = require("bcryptjs");
 const Item = require("./models").Item;
 
 module.exports = {
-// #2
-  createUser(newUser, callback){
+  // #2
+  createUser(newUser, callback) {
 
-// #3
+    // #3
     const salt = bcrypt.genSaltSync();
     const hashedPassword = bcrypt.hashSync(newUser.password, salt);
 
-// #4
+    // #4
     return User.create({
       username: newUser.username,
       password: hashedPassword
     })
-    .then((user) => {
-      callback(null, user);
-    })
-    .catch((err) => {
-      callback(err);
-    })
+      .then((user) => {
+        callback(null, user);
+      })
+      .catch((err) => {
+        callback(err);
+      })
   },
 
-  getUser(id, callback){
+  getUser(id, callback) {
 
     return User.findById(id, {
       include: [
-        {model: Item, as: "items" }
+        { model: Item, as: "items" }
       ]
     }).then((user) => {
       callback(null, user);
     })
-    .catch((err) => {
-      callback(err);
-    })
+      .catch((err) => {
+        callback(err);
+      })
   }
-  
+
 
 }

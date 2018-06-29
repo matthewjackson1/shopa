@@ -2,36 +2,36 @@ const itemQueries = require("../db/queries.items.js");
 const Authorizer = require("../policies/item.js");
 
 module.exports = {
-  index(req, res, next){
+  index(req, res, next) {
     itemQueries.getAllItems(req, (err, items) => {
-              if(err){
-              console.log(err);
-                res.redirect(500, "static/index");
-              } else {
-                res.render("items/index", {items});
-              }
-            });
+      if (err) {
+        console.log(err);
+        res.redirect(500, "static/index");
+      } else {
+        res.render("items/index", { items });
+      }
+    });
   },
 
-  getUserItems(req, res, next){
+  getUserItems(req, res, next) {
 
     itemQueries.getAllItems(req, (err, items) => {
-        if(err){
-          console.log(err);
-          } else {
-            res.send(items);
-          }
-        });
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(items);
+      }
+    });
   },
-  
-  create(req, res, next){
- // #2
+
+  create(req, res, next) {
+    // #2
     console.log("CREATE");
     const authorized = new Authorizer(req.user).create();
 
-    if(authorized) {
+    if (authorized) {
       console.log(authorized);
- // #3
+      // #3
       let newItem = {
         name: req.body.name,
         userId: req.user.id
@@ -39,10 +39,10 @@ module.exports = {
 
       console.log("Newitem", newItem);
 
- // #4
+      // #4
       itemQueries.createItem(newItem, (err, item) => {
- // #5
-        if(err){
+        // #5
+        if (err) {
           req.flash("error", err);
           console.log(err);
         }
@@ -55,62 +55,62 @@ module.exports = {
     }
   },
 
-  update(req, res, next){
+  update(req, res, next) {
     // #2
-       console.log("UPDATE");
-       const authorized = new Authorizer(req.user).update();
-   
-       if(authorized) {
-         console.log(authorized);
-    // #3
-         console.log("reqbody", req.body);
-   
-    // #4
-         itemQueries.updateItem(req, (err, item) => {
-    // #5
-           if(err){
-             req.flash("error", err);
-             console.log(err);
-           }
-           console.log("HEREEE");
-           res.redirect(req.headers.referer);
-         });
-       } else {
-         req.flash("notice", "You must be signed in to do that.")
-         req.redirect("/users/sign_in");
-       }
-     },
+    console.log("UPDATE");
+    const authorized = new Authorizer(req.user).update();
 
-     toggleComplete(req, res, next){
-      // #2
-         console.log("TOGGLECOMPLETE");
-         const authorized = new Authorizer(req.user).update();
-     
-         if(authorized) {
-           console.log(authorized);
+    if (authorized) {
+      console.log(authorized);
       // #3
-           console.log("reqbody", req.body);
-     
-      // #4
-           itemQueries.toggleItem(req, (err, item) => {
-      // #5
-             if(err){
-               req.flash("error", err);
-               console.log(err);
-             }
-             console.log("HEREEE");
-             res.redirect(req.headers.referer);
-           });
-         } else {
-           req.flash("notice", "You must be signed in to do that.")
-           req.redirect("/users/sign_in");
-         }
-       },
+      console.log("reqbody", req.body);
 
-// #6
-  destroy(req, res, next){
+      // #4
+      itemQueries.updateItem(req, (err, item) => {
+        // #5
+        if (err) {
+          req.flash("error", err);
+          console.log(err);
+        }
+        console.log("HEREEE");
+        res.redirect(req.headers.referer);
+      });
+    } else {
+      req.flash("notice", "You must be signed in to do that.")
+      req.redirect("/users/sign_in");
+    }
+  },
+
+  toggleComplete(req, res, next) {
+    // #2
+    console.log("TOGGLECOMPLETE");
+    const authorized = new Authorizer(req.user).update();
+
+    if (authorized) {
+      console.log(authorized);
+      // #3
+      console.log("reqbody", req.body);
+
+      // #4
+      itemQueries.toggleItem(req, (err, item) => {
+        // #5
+        if (err) {
+          req.flash("error", err);
+          console.log(err);
+        }
+        console.log("HEREEE");
+        res.redirect(req.headers.referer);
+      });
+    } else {
+      req.flash("notice", "You must be signed in to do that.")
+      req.redirect("/users/sign_in");
+    }
+  },
+
+  // #6
+  destroy(req, res, next) {
     itemQueries.deleteItem(req, (err, item) => {
-      if(err){
+      if (err) {
         res.redirect(err, req.headers.referer);
       } else {
         res.redirect(req.headers.referer);
