@@ -3,19 +3,19 @@
 
 <html>
   <head>
-    <% include ../static/partials/head.ejs %>
+    <%- include('../static/partials/head.ejs') %>
   </head>
   <body>
     <main class="container">
-      <% include ../static/partials/navbar.ejs %>  
+      <%- include('../static/partials/navbar.ejs') %>  
            
       <% if(currentUser) { %>
 
-        <% include ./partials/shoppinglist.ejs %>
+        <%- include('./partials/shoppinglist.ejs') %>
 
       <% } else { %>
 
-        <% include ./partials/loggedOutHome.ejs %>
+        <%- include('./partials/loggedOutHome.ejs') %>
         
       <% } %>
 

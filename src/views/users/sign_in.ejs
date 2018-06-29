@@ -2,16 +2,16 @@
 <html>
 
 <head>
-  <% include ../static/partials/head.ejs %>
+  <%- include('../static/partials/head.ejs') %>
 </head>
 
 <body>
 
-  <% include ../static/partials/navbar.ejs %>
+  <%- include('../static/partials/navbar.ejs') %>
 
     <main class="container">
 
-      <% include ../static/partials/messages.ejs %>
+      <%- include('../static/partials/messages.ejs') %>
 
         <h1 class="title-text">Sign in</h1>
         <h4>Not with us yet?
@@ -35,7 +35,7 @@
         </form>
     </main>
 
-    <% include ../static/partials/baseScripts.ejs %>
+    <%- include('../static/partials/baseScripts.ejs') %>
 
 </body>
 
