@@ -156,11 +156,13 @@ If you have any issues, `heroku logs -t` may be useful for troubleshooting.
 * [Bcrypt](https://www.npmjs.com/package/bcrypt) - bcrypt is a password hashing function designed by Niels Provos and David Mazières
 * [Jasmine](https://jasmine.github.io/) - Jasmine is an open source testing framework for JavaScript.
 * [Body parser](https://www.npmjs.com/package/body-parser) - Node.js body parsing middleware. Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
+* [Bootstrap] (https://getbootstrap.com/) Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
 
 # Technical choices
 - Node/express is the framework I know best for managing building applications that need to store data in a database. Because this application needed to have persistent data across different devices it seemed necessary to use such a framework
 - Passport and bcrypt because users should have to log in to create lists, otherwise the one list would have to be used by many people and this would be strange.
 - React enables us to have live-updating information that does not require page refreshes
+- Bootstrap enables me to build a consistent responsive layout and UI with a reduced level of manual coding
 
 # Technical challenges you encountered
 - Deciding how to incorporate React into the project - I thought at first I might build the front end totally in React. But my knowledge was very rusty and I realised that it would be overkill for the project given that only part of the application benefits from the live updating. 
